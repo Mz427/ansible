@@ -1,7 +1,5 @@
 ---
 - hosts: registry
-  vars:
-    ansible_password: "{{ ansible_password }}"
   tasks:
     - name: Print usage of disk.
-      shell: executable=/bin/tcsh df -h
+      shell: executable=/bin/bash df -h
