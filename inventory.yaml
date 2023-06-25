@@ -1,0 +1,17 @@
+MyComputers:
+  hosts:
+    FreebsdHost01:
+      ansible_host: 10.9.7.11
+  vars:
+    ansible_user: mz
+
+VirtualMachines:
+  hosts:
+    vm01:
+      ansible_host: 10.9.7.200
+    vm02:
+      ansible_host: 10.9.7.199
+    vm03:
+      ansible_host: 10.9.7.198
+  vars:
+    ansible_user: root
