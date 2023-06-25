@@ -1,5 +1,0 @@
----
-- hosts: registry
-  tasks:
-    - name: Print usage of disk.
-      shell: executable=/bin/bash df -h
