@@ -1,7 +1,11 @@
 MyComputers:
   hosts:
-    FreebsdHost01:
+    FreeBSDHost01:
       ansible_host: 10.9.7.11
+    Ubuntu01:
+      ansible_host: 10.9.7.41
+    OpenBSD01:
+      ansible_host: 10.9.7.14
   vars:
     ansible_user: mz
 
@@ -15,3 +19,11 @@ VirtualMachines:
       ansible_host: 10.9.7.198
   vars:
     ansible_user: root
+
+BSD:
+  FreeBSDHost01:
+  OpenBSD01:
+Linux:
+  Ubuntu01:
+  children:
+    VirtualMachines:

@@ -1,0 +1,17 @@
+- name: shutdown_FreeBSD
+  hosts: FreeBSDHost01
+  tasks:
+    - name: PingMyHosts
+      ansible.builtin.ping:
+
+- name: shutdown_OpenBSD
+  hosts: OpenBSD01
+  tasks:
+    - name: PingMyHosts
+      ansible.builtin.ping:
+
+- name: shutdown_Linux
+  hosts: FreeBSDHost01
+  tasks:
+    - name: PingMyHosts
+      ansible.builtin.ping:
