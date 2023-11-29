@@ -24,6 +24,5 @@ BSD:
   FreeBSDHost01:
   OpenBSD01:
 Linux:
-  Ubuntu01:
   children:
     VirtualMachines:
