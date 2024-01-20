@@ -1,0 +1,19 @@
+---
+
+- name: MyFirstPlay
+  hosts: all
+  tasks:
+    - name: Test01
+      ansible.builtin.shell:
+        cmd: jls
+      register: stdout01
+    - name: Test02
+      ansible.builtin.shell:
+        cmd: uname -r
+      register: stdout02
+    - name: Test03
+      debug:
+        var: stdout01
+    - name: Test04
+      debug:
+        var: stdout02

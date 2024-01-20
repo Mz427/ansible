@@ -1,8 +1,0 @@
-- name: MyFirstPlay
-  hosts: MyComputers
-  tasks:
-    - name: PingMyHosts
-      ansible.builtin.ping:
-    - name: PrintMessage
-      ansible.builtin.debug:
-        msg: Hello world

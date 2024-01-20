@@ -1,0 +1,13 @@
+- name: shutdown
+  hosts: all
+  remote_user: mz
+  become: yes
+  become_method: su
+  become_user: root
+  tasks:
+    - name: reboot_FreeBSD
+      command: "shutdown -r now"
+      when: ansible_os_family == "FreeBSD" or ansible_os_family == "OpenBSD"
+    - name: reboot_Linux
+      command: "systemctl reboot"
+      when: ansible_os_family == "Debian"
