@@ -2,31 +2,17 @@ MyComputers:
   hosts:
     FreeBSD01:
       ansible_host: 10.9.7.19
-      ansible_ssh_user: mz
       ansible_python_interpreter: /usr/local/bin/python3.9
     Ubuntu01:
       ansible_host: 10.9.7.41
-      ansible_ssh_user: mz
     OpenBSD01:
       ansible_host: 10.9.7.14
-      ansible_ssh_user: mz
 
 VirtualMachines:
   hosts:
     master01:
       ansible_host: 10.9.7.200
-      ansible_ssh_user: mz
     work01:
       ansible_host: 10.9.7.23
-      ansible_ssh_user: mz
     work02:
       ansible_host: 10.9.7.42
-      ansible_ssh_user: mz
-
-BSD:
-  FreeBSD01:
-  OpenBSD01:
-Linux:
-  Ubuntu01:
-  children:
-    VirtualMachines:
