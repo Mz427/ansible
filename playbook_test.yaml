@@ -1,19 +1,17 @@
 ---
-
-- name: MyFirstPlay
+- name: MyTestPlay
   hosts: all
+  vars:
+    - storage01: /MzBackup
+    - storage02: /MzBackup01
+    - storage03: /home/mz
   tasks:
     - name: Test01
       ansible.builtin.shell:
-        cmd: jls
-      register: stdout01
-    - name: Test02
-      ansible.builtin.shell:
-        cmd: uname -r
-      register: stdout02
-    - name: Test03
-      debug:
-        var: stdout01
-    - name: Test04
-      debug:
-        var: stdout02
+        cmd: ls {{ storage03 }} {{ storage01 }}
+      register: my_out
+    - name: task_out
+      ansible.builtin.debug:
+        var: my_out
+        verbosity: 0
+

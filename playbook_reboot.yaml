@@ -1,4 +1,5 @@
-- name: shutdown
+---
+- name: reboot
   hosts: all
   remote_user: mz
   become: yes

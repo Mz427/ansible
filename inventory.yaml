@@ -1,12 +1,13 @@
 MyComputers:
   hosts:
-    FreeBSD01:
-      ansible_host: 10.9.7.19
+    MzHost01:
+      ansible_host: 192.168.66.100
       ansible_python_interpreter: /usr/local/bin/python3.9
     Ubuntu01:
       ansible_host: 10.9.7.41
     OpenBSD01:
       ansible_host: 10.9.7.14
+  vars:
 
 VirtualMachines:
   hosts:

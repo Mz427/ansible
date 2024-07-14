@@ -1,3 +1,4 @@
+---
 - name: shutdown
   hosts: all
   remote_user: mz
