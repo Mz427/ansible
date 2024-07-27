@@ -3,11 +3,15 @@ MyComputers:
     MzHost01:
       ansible_host: 192.168.66.100
       ansible_python_interpreter: /usr/local/bin/python3.9
+      ansible_become_method: su
+      ansible_become_user: root
+      ansible_become_password: "{{ MzHost01.password_root }}"
     Ubuntu01:
       ansible_host: 10.9.7.41
     OpenBSD01:
       ansible_host: 10.9.7.14
-  vars:
+  vars_files:
+    - password_allhosts.yaml
 
 VirtualMachines:
   hosts:

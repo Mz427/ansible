@@ -1,17 +1,13 @@
 ---
 - name: MyTestPlay
   hosts: all
-  vars:
-    - storage01: /MzBackup
-    - storage02: /MzBackup01
-    - storage03: /home/mz
+  remote_user: mz
   tasks:
-    - name: Test01
+    - name: Task01
+      become: yes
       ansible.builtin.shell:
-        cmd: ls {{ storage03 }} {{ storage01 }}
-      register: my_out
-    - name: task_out
+        cmd: "ls -al ~"
+      register: out_Task01
+    - name: Task02
       ansible.builtin.debug:
-        var: my_out
-        verbosity: 0
-
+        msg: "{{ out_Task01 }}"
