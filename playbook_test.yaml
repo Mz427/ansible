@@ -1,9 +1,9 @@
 ---
 - name: MyTestPlay
   hosts: all
-  remote_user: mz
   tasks:
     - name: Task01
+      remote_user: mz
       become: yes
       ansible.builtin.shell:
         cmd: "ls -al ~"

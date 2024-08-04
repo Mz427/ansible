@@ -1,0 +1,7 @@
+---
+- name: Deplay django
+  hosts: MzHost01
+  roles:
+    - role: postgresql
+    - role: nginx
+    - role: django
