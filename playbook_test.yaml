@@ -1,6 +1,6 @@
 ---
 - name: MyTestPlay
-  hosts: all
+  hosts: MzHost01
   tasks:
     - name: Task01
       remote_user: mz
@@ -8,5 +8,18 @@
         cmd: "ls -al ~"
       register: out_Task01
     - name: Task02
+      ansible.builtin.file:
+        path: /home/mz/Downloads/test.txt
+        state: touch
+      notify:
+        - get file
+    - name: Task_output
       ansible.builtin.debug:
         msg: "{{ out_Task01.stdout }}"
+
+  handlers:
+    - name: get file
+      ansible.builtin.fetch:
+        src: /home/mz/Downloads/test.txt
+        dest: /home/mz/Documents/ansible_mz/
+        flat: yes
