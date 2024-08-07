@@ -4,10 +4,9 @@
   tasks:
     - name: Task01
       remote_user: mz
-      become: yes
       ansible.builtin.shell:
         cmd: "ls -al ~"
       register: out_Task01
     - name: Task02
       ansible.builtin.debug:
-        msg: "{{ out_Task01 }}"
+        msg: "{{ out_Task01.stdout }}"
