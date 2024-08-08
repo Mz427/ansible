@@ -1,5 +1,6 @@
 ---
 - hosts: all
+  become: yes
   vars:
     packages_name:
       - vim
@@ -10,7 +11,7 @@
         name: "{{ packages_name }}"
         state: present
         update_cache: yes
-      when: ansible_os_family == "Redhat"
+      when: ansible_os_family == "RedHat"
     - name: Install on Debian
       ansible.builtin.apt:
         name: "{{ packages_name }}"

@@ -1,23 +1,39 @@
 ---
 - name: MyTestPlay
-  hosts: MzHost01
+  hosts: all
+  become: yes
+  vars:
+    users_list:
+      - guest01
+      - guest02
+      - guest03
   tasks:
+    - name: Task00
+      ansible.builtin.user:
+        name: "{{ item }}"
+        state: absent
+      loop: "{{ users_list }}"
+      register: out_Task00
+      tags: Task00
     - name: Task01
       remote_user: mz
       ansible.builtin.shell:
-        cmd: "ls -al ~"
+        cmd: "uname -a"
       register: out_Task01
-      when: ansible_system == "FreeBSD"
+      tags: Task01
     - name: Task02
       ansible.builtin.file:
         path: /home/mz/Downloads/test.txt
         state: touch
+      register: out_Task02
       # 觸發器
       notify:
         - get file
+      tags: Task02
     - name: Task_output
       ansible.builtin.debug:
         msg: "{{ out_Task01.stdout }}"
+      tags: Task_output
   # 觸發器
   handlers:
     - name: get file

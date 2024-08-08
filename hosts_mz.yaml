@@ -19,9 +19,15 @@ MyComputers:
 VirtualMachines:
   hosts:
     master01:
-      ansible_host: 10.9.7.200
+      ansible_host: 192.168.66.200
+      ansible_become_user: root
+      ansible_become_method: sudo
+      ansible_sudo_pass: 058474
     work01:
-      ansible_host: 10.9.7.23
+      ansible_host: 192.168.66.107
+      ansible_become_user: root
+      ansible_become_method: su
+      ansible_become_password: 929393
     work02:
       ansible_host: 10.9.7.42
 
