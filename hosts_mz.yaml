@@ -2,7 +2,7 @@
 MyComputers:
   hosts:
     MzHost01:
-      ansible_host: 192.168.66.100
+      ansible_host: 192.168.66.242
       ansible_python_interpreter: /usr/local/bin/python3.9
 #     ansible_user: mz
 #     ansible_password: ...  # Need sshpass

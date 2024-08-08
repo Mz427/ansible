@@ -1,0 +1,25 @@
+---
+- hosts: all
+  vars:
+    packages_name:
+      - vim
+      - git
+  tasks:
+    - name: Install on Redhat
+      ansible.builtin.yum:
+        name: "{{ packages_name }}"
+        state: present
+        update_cache: yes
+      when: ansible_os_family == "Redhat"
+    - name: Install on Debian
+      ansible.builtin.apt:
+        name: "{{ packages_name }}"
+        state: present
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+    - name: Install on FreeBSD
+      community.general.pkgng:
+        name: "{{ packages_name }}"
+#       jail:
+        state: present
+      when: ansible_os_family == "FreeBSD"

@@ -7,16 +7,18 @@
       ansible.builtin.shell:
         cmd: "ls -al ~"
       register: out_Task01
+      when: ansible_system == "FreeBSD"
     - name: Task02
       ansible.builtin.file:
         path: /home/mz/Downloads/test.txt
         state: touch
+      # 觸發器
       notify:
         - get file
     - name: Task_output
       ansible.builtin.debug:
         msg: "{{ out_Task01.stdout }}"
-
+  # 觸發器
   handlers:
     - name: get file
       ansible.builtin.fetch:
