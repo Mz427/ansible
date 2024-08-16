@@ -1,0 +1,20 @@
+---
+dev:
+    hosts:
+        192.168.66.200:
+    vars:
+        ansible_become_method: sudo
+        ansible_sudo_pass: 058474
+test:
+    hosts:
+        serverb
+prod:
+    hosts:
+        serverc
+        serverd
+balancers:
+    hosts:
+        bastion
+webservers:
+    children:
+        prod

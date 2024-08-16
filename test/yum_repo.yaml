@@ -1,0 +1,12 @@
+---
+- name: yum_test
+  hosts: all
+  tasks:
+    - name: yum_repo
+      become: yes
+      ansible.builtin.yum_repository:
+        name: rh294_BASE
+        description: rh294 base software
+        baseurl: http://mirrors.aliyun.com/repo/fedora.repo
+        gpgcheck: no
+        enabled: yes

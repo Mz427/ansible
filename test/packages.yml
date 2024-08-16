@@ -1,0 +1,16 @@
+---
+- name: install packages
+  hosts: dev
+  become: yes
+  tasks:
+    - name: install packages
+      ansible.builtin.yum:
+        name:
+          - php
+          - mariadb
+          - "@Development Tools"
+        state: present
+    - name: update
+      ansible.builtin.yum:
+        name: "*"
+        state: latest
