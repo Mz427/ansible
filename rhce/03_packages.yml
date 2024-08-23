@@ -1,6 +1,6 @@
 ---
 - name: install packages
-  hosts: dev
+  hosts: dev, test, prod
   become: yes
   tasks:
     - name: install packages
@@ -8,6 +8,14 @@
         name:
           - php
           - mariadb
+        state: present
+- name: install packages
+  hosts: dev
+  become: yes
+  tasks:
+    - name: install packages
+      ansible.builtin.yum:
+        name:
           - "@Development Tools"
         state: present
     - name: update

@@ -1,0 +1,21 @@
+---
+- name: yum_test
+  hosts: all
+  tasks:
+    - name: yum_repo01
+      become: yes
+      ansible.builtin.yum_repository:
+        name: rh294_BASE
+        description: rh294 base software
+        baseurl: http://mirrors.aliyun.com/repo/fedora.repo
+        gpgcheck: no
+        enabled: yes
+    - name: yum_repo02
+      become: yes
+      ansible.builtin.yum_repository:
+        name: rh294_STREAM
+        description: rh294 stream software
+        baseurl: http://example.com/AppStream
+        gpgcheck: yes
+        gpgkey: http://example.com/gpgkey
+        enabled: yes

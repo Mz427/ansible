@@ -1,0 +1,14 @@
+# sudo yum install rhel-system-roles
+# rpm -ql rhel-system-roles | grep timesync
+# cp -a /usr/share/ansible/roles/rhel-system-roles.timesync roles/timesync
+# cp -a /usr/share/doc/rhel-system-roles.timesync/example-single-pool-playbook.yml ./timesync.yml
+#
+---
+- name: ce04
+  hosts: all
+  vars:
+    timesync_ntp_servers:
+      - hostname: example.org
+        iburst: yes
+  roles:
+    timesync

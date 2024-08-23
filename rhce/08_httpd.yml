@@ -1,0 +1,5 @@
+---
+- name: ce08
+  hosts: dev
+  roles:
+    - apache

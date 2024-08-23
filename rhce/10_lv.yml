@@ -1,0 +1,30 @@
+---
+- name: ce10
+  hosts: all
+  tasks:
+    - name: create lv
+      block:
+        - name: create 600M
+          ansible.builtin.lvol:
+            vg: research
+            lv: data
+            size: 600
+      rescue:
+        - name: debug
+          ansible.builtin.debug:
+            msg: Could not create 600M
+        - name: create 400M
+          ansible.builtin.lvol:
+            vg: research
+            lv: data
+            size: 400
+      always:
+        - name: mkfs
+          ansible.builtin.filesystem:
+            fstype: ext4
+            dev: /dev/research/data
+      when: "'research' in ansible_lvm.vgs"
+    - name: lv not exists
+      ansible.builtin.debug:
+        msg: volume is not exists.
+      when: "'research' not in ansible_lvm.vgs"

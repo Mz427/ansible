@@ -1,0 +1,7 @@
+# vim roles/requirements.yml
+- src: url1
+  name: balance
+- src: url2
+  name: phpinfo
+# ansible-galaxy install -r roles/requirements.yml -p roles/
+# ansible-galaxy list

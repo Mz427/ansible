@@ -1,0 +1,11 @@
+---
+- name: get fact
+  hosts: webservers
+- name: ce09 balancers
+  hosts: balancers
+  roles: 
+    - balancers
+- name: ce09 php
+  hosts: webservers
+  roles:
+    - phpinfo

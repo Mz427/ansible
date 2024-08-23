@@ -1,0 +1,12 @@
+# rpm -ql rhel-system-roles | grep selinux
+# cp -a /usr/share/ansible/roles/rhel-system-roles.selinux role/selinux
+# cp -a /usr/share/doc/rhel-system-roles/selinux/example-selinux-playbook.yml ./selinux.yml
+#
+---
+- name: ce05
+  hosts: all
+  vars:
+    selinux_policy: targeted
+    selinux_state: enforcing
+  roles:
+    selinux
