@@ -2,10 +2,10 @@
 dev:
     hosts:
         192.168.66.200:
+        192.168.66.201:
     vars:
         ansible_become_user: root
         ansible_become_method: sudo
-        # ansible_sudo_pass: 058474
         ansible_become_ask_pass: false
 test:
     hosts:

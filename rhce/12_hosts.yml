@@ -1,0 +1,9 @@
+---
+- name: hostsfile
+  hosts: dev
+  gather_facts: yes
+  tasks:
+    - name: task01
+      ansible.builtin.template:
+        src: 12_hosts.j2
+        dest: /etc/myhosts
