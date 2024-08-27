@@ -1,0 +1,20 @@
+---
+- name: webcontent
+  hosts: dev
+  tasks:
+    - name: webcontent
+      ansible.builtin.file:
+        path: /webdev
+        state: directory
+        group: devops
+        mode: u=rwx,g=rwxs,o=rx
+    - name: link
+      ansible.builtin.file:
+        src: /webdev
+        dest: /var/www/html/webdev
+        state: link
+    - name: create
+      ansible.builtin.copy:
+        content: "Development"
+        dest: /webdev/index.html
+        setype: httpd_sys_content_t

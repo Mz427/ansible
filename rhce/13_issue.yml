@@ -1,0 +1,14 @@
+---
+- name: issue
+  hosts: all
+  tasks:
+    - name: issue01
+      ansible.builtin.copy:
+        content: "Development"
+        dest: /etc/myissue
+      when: inventory_hostname in groups.dev
+    - name: issue02
+      ansible.builtin.copy:
+        content: "test"
+        dest: /etc/myissue
+      when: inventory_hostname in groups.test
