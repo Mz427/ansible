@@ -1,0 +1,10 @@
+users:
+  - name: bob
+    job: developer
+    uid: 1101
+  - name: sally
+    job: manager
+    uid: 1102
+  - name: fred
+    job: developer
+    uid: 1103

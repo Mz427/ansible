@@ -1,0 +1,34 @@
+---
+- name: ce15
+  hosts: all
+  tasks:
+    - name: get url
+      ansible.builtin.get_url:
+        url: 
+        dest: /root/hwreport.txt
+        force: yes
+    - name: inventory hostname
+      ansible.builtin.replace:
+        path: /root/hwreport.txt
+        regexp: "inventoryhostname"
+        replace: "{{ inventory_hostname }}"
+    - name: memory_in_MB
+      ansible.builtin.replace:
+        path: /root/hwreport.txt
+        regexp: "memory_in_MB"
+        replace: "{{ ansible_memtotal_mb | string }}"
+    - name: BIOS_version 
+      ansible.builtin.replace:
+        path: /root/hwreport.txt
+        regexp: "BIOS_version"
+        replace: "{{ ansible_bios_version }}"
+    - name: disk_vda_size 
+      ansible.builtin.replace:
+        path: /root/hwreport.txt
+        regexp: "disk_vda_size"
+        replace: "{{ ansible_devices.vda.size | default('NONE') }}"
+    - name: disk_vdb_size 
+      ansible.builtin.replace:
+        path: /root/hwreport.txt
+        regexp: "disk_vda_size"
+        replace: "{{ ansible_devices.vdb.size | default('NONE') }}"

@@ -1,0 +1,10 @@
+---
+- name: ce19
+  hosts: dev
+  tasks:
+    - name: crontab
+      ansible.builtin.cron:
+        name: cron job
+        job: logger "EX294 in porgress"
+        user: natasha
+        minute: */2

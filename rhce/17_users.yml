@@ -1,0 +1,37 @@
+---
+- name: ce17-1
+  hosts: dev, test
+  vars_files:
+    - 16_locker.yml
+    - 17_user_list.yml
+  tasks:
+    - name: create group
+      ansible.builtin.group:
+        name: deveops
+        state: present
+    - name: create user
+      ansible.builtin.user:
+        name: "{{ item.name }}"
+        uid: "{{ item.uid }}"
+        groups: deveops
+        password: "{{ pw_developer | password_hash('sha512') }}"
+      loop: "{{ users }}"
+      when: item.job == "developer"
+- name: ce17-2
+  hosts: prod
+  vars_files:
+    - 16_locker.yml
+    - 17_user_list.yml
+  tasks:
+    - name: create group
+      ansible.builtin.group:
+        name: opsmgr
+        state: present
+    - name: create user
+      ansible.builtin.user:
+        name: "{{ item.name }}"
+        uid: "{{ item.uid }}"
+        groups: opsmgr
+        password: "{{ pw_manager | password_hash('sha512') }}"
+      loop: "{{ users }}"
+      when: item.job == "manager"
